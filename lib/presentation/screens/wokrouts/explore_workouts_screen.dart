@@ -1,5 +1,6 @@
 import 'package:fit_track/presentation/bloc/user/user_cubit.dart';
 import 'package:fit_track/presentation/bloc/workout/workout_cubit.dart';
+import 'package:fit_track/presentation/screens/wokrouts/add_workout_screen.dart';
 import 'package:fit_track/presentation/screens/wokrouts/widgets/data_choose_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,8 +30,25 @@ class _ExploreWorkoutsScreenState extends State<ExploreWorkoutsScreen> {
     var height = MediaQuery.of(context).size.longestSide;
     var theme = Theme.of(context);
     return Scaffold(
-      floatingActionButton:
-          isSelected ? FloatingActionButton(onPressed: () {}) : null,
+      floatingActionButton: isSelected
+          ? FloatingActionButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddWorkoutScreen(
+                      dayOfWeek: dayOfWeek,
+                    ),
+                  ),
+                );
+              },
+              backgroundColor: theme.colorScheme.onSecondary,
+              child: const Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
+            )
+          : null,
       body: SafeArea(
         child: SingleChildScrollView(
           child: BlocBuilder<WorkoutCubit, WorkoutState>(
@@ -192,7 +210,14 @@ class _ExploreWorkoutsScreenState extends State<ExploreWorkoutsScreen> {
                               " min",
                           isWorkout: true,
                           onTap: () {},
-                          onTrashTap: () {},
+                          onTrashTap: () {
+                            BlocProvider.of<WorkoutCubit>(context)
+                                .deleteWorkout(
+                                    workout: loadedState.workouts
+                                        .where((element) =>
+                                            element.dayOfWeek == dayOfWeek)
+                                        .toList()[index]);
+                          },
                         ),
                       ),
                     ],

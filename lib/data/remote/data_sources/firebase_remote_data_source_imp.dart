@@ -18,6 +18,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
 
   @override
   Future<void> addWorkout(WorkoutEntity workoutEntity) async {
+    debugPrint('started');
     final workoutCollectionRef = firestore
         .collection(userCollectionName)
         .doc(await getCurrentUId())
