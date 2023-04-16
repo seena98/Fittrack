@@ -3,7 +3,7 @@ import 'package:fit_track/domain/entities/workouts.dart';
 import '../entities/user_entity.dart';
 
 abstract class FirebaseRepository {
-  Future<bool> isSignIn();
+  Future<bool> isSignedIn();
 
   Future<void> signIn(UserEntity user);
 
@@ -21,5 +21,5 @@ abstract class FirebaseRepository {
 
   Future<void> deleteWorkout(WorkoutEntity workout);
 
-  Future<List<WorkoutEntity>> getWorkouts(String uid);
+  Stream<List<WorkoutEntity>> getWorkouts(String uid);
 }

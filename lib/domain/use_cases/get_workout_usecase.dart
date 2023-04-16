@@ -7,7 +7,7 @@ class GetWorkoutsUseCase {
 
   GetWorkoutsUseCase({required this.repository});
 
-  Future<List<WorkoutEntity>> call(String uid) {
+  Stream<List<WorkoutEntity>> call(String uid) {
     return repository.getWorkouts(uid);
   }
 }

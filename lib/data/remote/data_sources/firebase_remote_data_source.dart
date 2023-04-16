@@ -2,7 +2,7 @@ import '../../../domain/entities/user_entity.dart';
 import '../../../domain/entities/workouts.dart';
 
 abstract class FirebaseRemoteDataSource {
-  Future<bool> isSignIn();
+  Future<bool> isSignedIn();
 
   Future<void> signIn(UserEntity user);
 
@@ -20,5 +20,5 @@ abstract class FirebaseRemoteDataSource {
 
   Future<void> deleteWorkout(WorkoutEntity workout);
 
-  Future<List<WorkoutEntity>> getWorkouts(String uid);
+  Stream<List<WorkoutEntity>> getWorkouts(String uid);
 }

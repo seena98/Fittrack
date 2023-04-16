@@ -76,18 +76,20 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   Future<String> getCurrentUId() async => auth.currentUser!.uid;
 
   @override
-  Future<List<WorkoutEntity>> getWorkouts(String id) async {
+  Stream<List<WorkoutEntity>> getWorkouts(String id) {
     final workoutCollectionRef = firestore
         .collection(userCollectionName)
         .doc(uid)
         .collection(workoutCollectionName);
-    var result = await workoutCollectionRef.get();
-    for (var item in result.docs) {}
-    return [];
+    return workoutCollectionRef.snapshots().map((querySnap) {
+      return querySnap.docs
+          .map((docSnap) => WorkoutModel.fromSnapshot(docSnap))
+          .toList();
+    });
   }
 
   @override
-  Future<bool> isSignIn() async => auth.currentUser?.uid != null;
+  Future<bool> isSignedIn() async => auth.currentUser?.uid != null;
 
   @override
   Future<void> signIn(UserEntity user) async => auth.signInWithEmailAndPassword(

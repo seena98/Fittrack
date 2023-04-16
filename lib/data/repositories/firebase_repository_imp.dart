@@ -25,11 +25,11 @@ class FirebaseRepositoryImpl extends FirebaseRepository {
   Future<String> getCurrentUId() async => remoteDataSource.getCurrentUId();
 
   @override
-  Future<List<WorkoutEntity>> getWorkouts(String uid) =>
+  Stream<List<WorkoutEntity>> getWorkouts(String uid) =>
       remoteDataSource.getWorkouts(uid);
 
   @override
-  Future<bool> isSignIn() async => remoteDataSource.isSignIn();
+  Future<bool> isSignedIn() async => remoteDataSource.isSignedIn();
 
   @override
   Future<void> signIn(UserEntity user) async => remoteDataSource.signIn(user);

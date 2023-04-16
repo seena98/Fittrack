@@ -6,6 +6,9 @@ import 'package:fit_track/domain/use_cases/get_create_current_user_usecase.dart'
 import 'package:fit_track/domain/use_cases/get_current_uid_usecase.dart';
 import 'package:fit_track/domain/use_cases/get_workout_usecase.dart';
 import 'package:fit_track/domain/use_cases/update_workout_usecase.dart';
+import 'package:fit_track/presentation/bloc/auth/auth_cubit.dart';
+import 'package:fit_track/presentation/bloc/user/user_cubit.dart';
+import 'package:fit_track/presentation/bloc/workout/workout_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import 'data/remote/data_sources/firebase_remote_data_source.dart';
@@ -21,7 +24,21 @@ GetIt getItHandler = GetIt.instance;
 
 Future<void> init() async {
   //Cubit/Bloc
-
+  getItHandler.registerFactory<AuthCubit>(() => AuthCubit(
+      isSignedInUseCase: getItHandler.call(),
+      signOutUseCase: getItHandler.call(),
+      getCurrentUidUseCase: getItHandler.call()));
+  getItHandler.registerFactory<UserCubit>(() => UserCubit(
+        getCreateCurrentUserUseCase: getItHandler.call(),
+        signInUseCase: getItHandler.call(),
+        signUPUseCase: getItHandler.call(),
+      ));
+  getItHandler.registerFactory<WorkoutCubit>(() => WorkoutCubit(
+        updateWorkoutUseCase: getItHandler.call(),
+        getWorkoutsUseCase: getItHandler.call(),
+        deleteWorkoutUseCase: getItHandler.call(),
+        addWorkoutUseCase: getItHandler.call(),
+      ));
   //useCase
   getItHandler.registerLazySingleton<AddWorkoutUseCase>(
       () => AddWorkoutUseCase(repository: getItHandler.call()));
@@ -35,8 +52,8 @@ Future<void> init() async {
       () => GetCurrentUidUseCase(repository: getItHandler.call()));
   getItHandler.registerLazySingleton<GetWorkoutsUseCase>(
       () => GetWorkoutsUseCase(repository: getItHandler.call()));
-  getItHandler.registerLazySingleton<IsSignInUseCase>(
-      () => IsSignInUseCase(repository: getItHandler.call()));
+  getItHandler.registerLazySingleton<IsSignedInUseCase>(
+      () => IsSignedInUseCase(repository: getItHandler.call()));
   getItHandler.registerLazySingleton<SignInUseCase>(
       () => SignInUseCase(repository: getItHandler.call()));
   getItHandler.registerLazySingleton<SignOutUseCase>(
