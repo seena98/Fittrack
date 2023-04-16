@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fit_track/domain/use_cases/get_create_current_user_usecase.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../../../domain/entities/user_entity.dart';
 import '../../../domain/use_cases/sign_in_usecase.dart';
@@ -22,6 +23,7 @@ class UserCubit extends Cubit<UserState> {
       : super(UserInitial());
 
   Future<void> submitSignIn({required UserEntity user}) async {
+    debugPrint("started");
     emit(UserLoading());
     try {
       await signInUseCase.call(user);

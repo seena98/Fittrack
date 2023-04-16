@@ -16,7 +16,7 @@ class SplashScreen extends StatelessWidget {
           if (state is Authenticated) {
             return const ExploreWorkoutsScreen();
           } else if (state is UnAuthenticated) {
-            return const LoginScreen();
+            return LoginScreen();
           } else {
             return const Center(
               child: Text(

@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class RegistrationScreen extends StatelessWidget {
   static const routName = "/registration-screen";
 
-  const RegistrationScreen({Key? key}) : super(key: key);
+  RegistrationScreen({Key? key}) : super(key: key);
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

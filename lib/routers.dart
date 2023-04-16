@@ -8,7 +8,7 @@ class Routers {
       case '/':
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case RegistrationScreen.routName:
-        return MaterialPageRoute(builder: (_) => const RegistrationScreen());
+        return MaterialPageRoute(builder: (_) => RegistrationScreen());
       default:
         return MaterialPageRoute(builder: (_) {
           return Scaffold(
