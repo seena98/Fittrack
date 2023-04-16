@@ -1,4 +1,5 @@
-import 'package:fit_track/presentation/screens/splash/splash_screen.dart';
+import 'package:fit_track/routers.dart';
+import 'package:fit_track/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,10 +14,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'FitTrack',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const SplashScreen(),
+      debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.system,
+      theme: Themes.getInstance().light,
+      // initial route to '/' splash screen
+      initialRoute: '/',
+      onGenerateRoute: Routers.generateRoute,
     );
   }
 }
