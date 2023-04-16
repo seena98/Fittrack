@@ -18,6 +18,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await dependency_injection.init();
+  //FirebaseAuth.instance.signOut();
   runApp(const MyApp());
 }
 

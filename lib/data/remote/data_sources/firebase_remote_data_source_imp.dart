@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fit_track/data/remote/models/workout_model.dart';
 import 'package:fit_track/domain/entities/workouts.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../../../domain/entities/user_entity.dart';
 import '../models/user_model.dart';
@@ -22,9 +23,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
         .doc(await getCurrentUId())
         .collection("workouts");
 
-    final workoutId = workoutCollectionRef
-        .doc()
-        .id;
+    final workoutId = workoutCollectionRef.doc().id;
 
     workoutCollectionRef.doc(workoutId).get().then((workout) {
       final newWorkout = WorkoutModel(
@@ -83,6 +82,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection(workoutCollectionName);
     return workoutCollectionRef.snapshots().map((querySnap) {
+      debugPrint(querySnap.docs.toString());
       return querySnap.docs
           .map((docSnap) => WorkoutModel.fromSnapshot(docSnap))
           .toList();
@@ -93,9 +93,8 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   Future<bool> isSignedIn() async => auth.currentUser?.uid != null;
 
   @override
-  Future<void> signIn(UserEntity user) async =>
-      auth.signInWithEmailAndPassword(
-          email: user.email!, password: user.password!);
+  Future<void> signIn(UserEntity user) async => auth.signInWithEmailAndPassword(
+      email: user.email!, password: user.password!);
 
   @override
   Future<void> signOut() async => auth.signOut();
