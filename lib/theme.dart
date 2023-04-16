@@ -32,5 +32,49 @@ class Themes {
         color: Colors.white,
       ),
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      hoverColor: const Color(0xffB1B1B1),
+      filled: true,
+      fillColor: const Color(0xffB3B6BC),
+      focusColor: const Color(0xffB1B1B1),
+      border: OutlineInputBorder(
+        borderSide: const BorderSide(color: Color(0xffe5e5ea), width: 1),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      hintStyle: const TextStyle(
+        color: Colors.black,
+        fontSize: 16,
+        fontFamily: 'inter',
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Color(0xffB1B1B1), width: 1.5),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Color(0xffB1B1B1), width: 1),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Color(0xffE5E5EA), width: 1),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      counterStyle: const TextStyle(
+        color: Color(0xffB1B1B1),
+        fontSize: 16,
+        fontFamily: 'inter',
+      ),
+      helperStyle: const TextStyle(
+        color: Colors.black,
+        fontSize: 16,
+        fontFamily: 'inter',
+      ),
+      labelStyle: const TextStyle(
+        color: Colors.black,
+        fontSize: 16,
+        fontFamily: 'inter',
+      ),
+      contentPadding:
+          const EdgeInsets.symmetric(horizontal: 14.0, vertical: 15),
+    ),
   );
 }

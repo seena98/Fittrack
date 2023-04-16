@@ -1,4 +1,4 @@
-import 'package:fit_track/presentation/screens/registration/registration_screen.dart';
+import 'package:fit_track/presentation/screens/registration/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +16,7 @@ class SplashScreen extends StatelessWidget {
           if (state is Authenticated) {
             return const ExploreWorkoutsScreen();
           } else if (state is UnAuthenticated) {
-            return const RegistrationScreen();
+            return const LoginScreen();
           } else {
             return const Center(
               child: Text(
