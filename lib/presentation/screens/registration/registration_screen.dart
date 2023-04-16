@@ -108,7 +108,6 @@ class RegistrationScreenState extends State<RegistrationScreen> {
             child: TextField(
               controller: usernameController,
               cursorColor: Colors.black,
-              obscureText: true,
               decoration: const InputDecoration(hintText: "Your Name"),
             ),
           ),
@@ -143,6 +142,30 @@ class RegistrationScreenState extends State<RegistrationScreen> {
                   buttonHeight: 44,
                   buttonWidth: double.infinity,
                   text: "Create Account"),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const Text(
+            "Already have an account?",
+            style: TextStyle(
+              fontSize: 12,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+            },
+            child: const Text(
+              "Sign in",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
         ],

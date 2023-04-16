@@ -155,6 +155,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
+              const SizedBox(
+                width: 10,
+              ),
+              const Spacer(),
+              Image.asset(
+                "assets/icons/facebook.png",
+                height: 70,
+              ),
+              const Spacer(),
+              Image.asset(
+                "assets/icons/google.png",
+                height: 70,
+              ),
+              const Spacer(),
+              Image.asset(
+                "assets/icons/apple.png",
+                height: 70,
+              ),
             ],
           ),
           SizedBox(
