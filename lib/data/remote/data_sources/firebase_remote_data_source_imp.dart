@@ -8,7 +8,7 @@ import '../models/user_model.dart';
 import 'firebase_remote_data_source.dart';
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
-  FirebaseRemoteDataSourceImpl(this.auth, this.firestore);
+  FirebaseRemoteDataSourceImpl({required this.auth, required this.firestore});
 
   final FirebaseAuth auth;
   final FirebaseFirestore firestore;
