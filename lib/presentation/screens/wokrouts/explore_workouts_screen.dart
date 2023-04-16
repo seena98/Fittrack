@@ -1,6 +1,7 @@
 import 'package:fit_track/presentation/bloc/user/user_cubit.dart';
 import 'package:fit_track/presentation/bloc/workout/workout_cubit.dart';
 import 'package:fit_track/presentation/screens/wokrouts/add_workout_screen.dart';
+import 'package:fit_track/presentation/screens/wokrouts/update_workout_screen.dart';
 import 'package:fit_track/presentation/screens/wokrouts/widgets/data_choose_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -209,7 +210,23 @@ class _ExploreWorkoutsScreenState extends State<ExploreWorkoutsScreen> {
                               "${loadedState.workouts.where((element) => element.dayOfWeek == dayOfWeek).toList()[index].trainingTime!}"
                               " min",
                           isWorkout: true,
-                          onTap: () {},
+                          onTap: () {
+                            var workout = loadedState.workouts
+                                .where(
+                                    (element) => element.dayOfWeek == dayOfWeek)
+                                .toList()[index];
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => UpdateWorkoutScreen(
+                                  dayOfWeek: dayOfWeek,
+                                  trainingName: workout.trainingName ?? "",
+                                  trainingTime: workout.trainingTime ?? 0,
+                                  id: workout.id ?? "",
+                                ),
+                              ),
+                            );
+                          },
                           onTrashTap: () {
                             BlocProvider.of<WorkoutCubit>(context)
                                 .deleteWorkout(

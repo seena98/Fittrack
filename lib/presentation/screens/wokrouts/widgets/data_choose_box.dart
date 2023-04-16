@@ -32,11 +32,14 @@ class DataChooseBox extends StatelessWidget {
       child: isWorkout == true
           ? Row(
               children: [
-                Text(
-                  text,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
+                InkWell(
+                  onTap: onTap,
+                  child: Text(
+                    text,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
                 const Spacer(),

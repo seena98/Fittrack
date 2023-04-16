@@ -107,6 +107,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
 
   @override
   Future<void> updateWorkout(WorkoutEntity workout) async {
+    debugPrint("started update");
     Map<String, dynamic> workoutMap = {};
     final workoutCollectionRef = firestore
         .collection(userCollectionName)
