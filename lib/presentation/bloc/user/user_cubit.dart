@@ -16,6 +16,8 @@ class UserCubit extends Cubit<UserState> {
   final SignUPUseCase signUPUseCase;
   final GetCreateCurrentUserUseCase getCreateCurrentUserUseCase;
 
+  UserEntity? userData;
+
   UserCubit(
       {required this.signUPUseCase,
       required this.signInUseCase,
@@ -38,8 +40,10 @@ class UserCubit extends Cubit<UserState> {
   Future<void> submitSignUp({required UserEntity user}) async {
     emit(UserLoading());
     try {
+      debugPrint("started");
       await signUPUseCase.call(user);
       await getCreateCurrentUserUseCase.call(user);
+      userData = user;
       emit(UserSuccess());
     } on SocketException catch (_) {
       emit(UserFailure());

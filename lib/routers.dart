@@ -1,3 +1,4 @@
+import 'package:fit_track/presentation/screens/registration/login_screen.dart';
 import 'package:fit_track/presentation/screens/registration/registration_screen.dart';
 import 'package:fit_track/presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +8,10 @@ class Routers {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => const SplashScreen());
-      case RegistrationScreen.routName:
-        return MaterialPageRoute(builder: (_) => RegistrationScreen());
+      case RegistrationScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const RegistrationScreen());
+      case LoginScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
       default:
         return MaterialPageRoute(builder: (_) {
           return Scaffold(

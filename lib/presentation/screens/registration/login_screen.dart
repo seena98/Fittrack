@@ -9,6 +9,8 @@ import '../../bloc/auth/auth_cubit.dart';
 import '../../bloc/user/user_cubit.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const routeName = "/login-screen";
+
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -133,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
               InkWell(
                 onTap: () {
                   Navigator.pushReplacementNamed(
-                      context, RegistrationScreen.routName);
+                      context, RegistrationScreen.routeName);
                 },
                 child: const Text(
                   "Sign up",
