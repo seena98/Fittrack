@@ -1,4 +1,4 @@
-import 'package:fit_track/screens/splash_screen.dart';
+import 'package:fit_track/presentation/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
