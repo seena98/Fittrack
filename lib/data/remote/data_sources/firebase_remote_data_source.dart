@@ -14,11 +14,11 @@ abstract class FirebaseRemoteDataSource {
 
   Future<void> getCreateCurrentUser(UserEntity user);
 
-  Future<void> addWorkout(WorkoutEntity note);
+  Future<void> addWorkout(WorkoutEntity workout);
 
-  Future<void> updateWorkout(WorkoutEntity note);
+  Future<void> updateWorkout(WorkoutEntity workout);
 
-  Future<void> deleteWorkout(WorkoutEntity note);
+  Future<void> deleteWorkout(WorkoutEntity workout);
 
   Future<List<WorkoutEntity>> getWorkouts(String uid);
 }

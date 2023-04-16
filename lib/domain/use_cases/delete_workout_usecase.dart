@@ -1,0 +1,13 @@
+import 'package:fit_track/domain/entities/workouts.dart';
+
+import '../repositories/firebase_repositories.dart';
+
+class DeleteWorkoutUseCase {
+  final FirebaseRepository repository;
+
+  DeleteWorkoutUseCase({required this.repository});
+
+  Future<void> call(WorkoutEntity workout) async {
+    return repository.deleteWorkout(workout);
+  }
+}
