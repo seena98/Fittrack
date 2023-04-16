@@ -14,16 +14,17 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   final FirebaseFirestore firestore;
   static const String workoutCollectionName = "workouts";
   static const String userCollectionName = "users";
-  final String uid = FirebaseAuth.instance.currentUser!.uid;
 
   @override
   Future<void> addWorkout(WorkoutEntity workoutEntity) async {
     final workoutCollectionRef = firestore
         .collection(userCollectionName)
-        .doc(uid)
+        .doc(await getCurrentUId())
         .collection("workouts");
 
-    final workoutId = workoutCollectionRef.doc().id;
+    final workoutId = workoutCollectionRef
+        .doc()
+        .id;
 
     workoutCollectionRef.doc(workoutId).get().then((workout) {
       final newWorkout = WorkoutModel(
@@ -44,7 +45,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   Future<void> deleteWorkout(WorkoutEntity workoutEntity) async {
     final workoutCollectionRef = firestore
         .collection("users")
-        .doc(uid)
+        .doc(await getCurrentUId())
         .collection(workoutCollectionName);
 
     workoutCollectionRef.doc(workoutEntity.id).get().then((workout) {
@@ -79,7 +80,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   Stream<List<WorkoutEntity>> getWorkouts(String id) {
     final workoutCollectionRef = firestore
         .collection(userCollectionName)
-        .doc(uid)
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection(workoutCollectionName);
     return workoutCollectionRef.snapshots().map((querySnap) {
       return querySnap.docs
@@ -92,8 +93,9 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
   Future<bool> isSignedIn() async => auth.currentUser?.uid != null;
 
   @override
-  Future<void> signIn(UserEntity user) async => auth.signInWithEmailAndPassword(
-      email: user.email!, password: user.password!);
+  Future<void> signIn(UserEntity user) async =>
+      auth.signInWithEmailAndPassword(
+          email: user.email!, password: user.password!);
 
   @override
   Future<void> signOut() async => auth.signOut();
@@ -108,7 +110,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
     Map<String, dynamic> workoutMap = {};
     final workoutCollectionRef = firestore
         .collection(userCollectionName)
-        .doc(uid)
+        .doc(await getCurrentUId())
         .collection(workoutCollectionName);
 
     if (workout.trainingName != null) {
