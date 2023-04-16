@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "526409823978",
+    "project_id": "fit-track-edd58",
+    "storage_bucket": "fit-track-edd58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526409823978:android:f798d4ee92ecaeca028993",
+        "android_client_info": {
+          "package_name": "com.fit.track.fit_track"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526409823978-q7snogtlt0dhs5o1udd26qr8l95vdlt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxfWCpBH3rQjlb9HEnY_mnujAF2wgYqik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526409823978-q7snogtlt0dhs5o1udd26qr8l95vdlt3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "526409823978-u1te0p1kjiv519i4sl5o9gpkhaqk102o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.fit.track.fitTrack"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
