@@ -67,7 +67,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDataSource {
       ).toDocument();
       if (!value.exists) {
         userCollectionRef.doc(uid).set(newUser);
-      }
+      } else {}
       return;
     });
   }
