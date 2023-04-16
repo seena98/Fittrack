@@ -39,6 +39,7 @@ class RegistrationScreenState extends State<RegistrationScreen> {
         body: SafeArea(
           child: BlocConsumer<UserCubit, UserState>(
             builder: (context, userState) {
+              //on sign up success event go to explore workouts
               if (userState is UserSuccess) {
                 return BlocBuilder<AuthCubit, AuthState>(
                     builder: (context, authState) {
@@ -54,9 +55,11 @@ class RegistrationScreenState extends State<RegistrationScreen> {
             },
             listener: (context, userState) {
               if (userState is UserSuccess) {
+                //change state on success
                 BlocProvider.of<AuthCubit>(context).loggedIn();
               }
               if (userState is UserFailure) {
+                //show error on failure
                 const SnackBar(content: Text('invalid email'));
               }
             },
@@ -64,6 +67,7 @@ class RegistrationScreenState extends State<RegistrationScreen> {
         ));
   }
 
+  //this is the registration body
   body({
     required ThemeData theme,
     required double height,
@@ -173,6 +177,7 @@ class RegistrationScreenState extends State<RegistrationScreen> {
     );
   }
 
+  ///submit sign up request
   void submitSignUp() {
     if (usernameController.text.isNotEmpty &&
         emailController.text.isNotEmpty &&

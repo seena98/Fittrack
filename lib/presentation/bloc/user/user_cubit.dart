@@ -14,6 +14,7 @@ import '../../../domain/use_cases/sign_up_usecase.dart';
 
 part 'user_state.dart';
 
+///this cubit is responsible for user sign in / up functionalities
 class UserCubit extends Cubit<UserState> {
   final SignInUseCase signInUseCase;
   final SignUPUseCase signUPUseCase;
@@ -21,19 +22,20 @@ class UserCubit extends Cubit<UserState> {
 
   UserEntity? userData;
 
-  UserCubit(
-      {required this.signUPUseCase,
-      required this.signInUseCase,
-      required this.getCreateCurrentUserUseCase})
+  UserCubit({required this.signUPUseCase,
+    required this.signInUseCase,
+    required this.getCreateCurrentUserUseCase})
       : super(UserInitial());
 
+  ///sing the user in with email and password
   Future<void> submitSignIn({required UserEntity user}) async {
     debugPrint("started");
     emit(UserLoading());
     try {
       await signInUseCase.call(user);
+      //fetch users data from db
       final userCollectionRef =
-          await FirebaseFirestore.instance.collection("users");
+      FirebaseFirestore.instance.collection("users");
       userCollectionRef
           .doc(FirebaseAuth.instance.currentUser!.uid)
           .get()
@@ -43,7 +45,8 @@ class UserCubit extends Cubit<UserState> {
           email: value.data()!["email"],
           name: value.data()!["name"],
         );
-        print("name: ${value.data()!["name"]}");
+        debugPrint("name: ${value.data()!["name"]}");
+        //set our users data on memory
         userData = newUser;
       });
       emit(UserSuccess());
@@ -54,12 +57,15 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
+
+  ///this function signs the user up
   Future<void> submitSignUp({required UserEntity user}) async {
     emit(UserLoading());
     try {
       debugPrint("started");
       await signUPUseCase.call(user);
       await getCreateCurrentUserUseCase.call(user);
+      //set user data on memory after sign up
       userData = user;
       emit(UserSuccess());
     } on SocketException catch (_) {

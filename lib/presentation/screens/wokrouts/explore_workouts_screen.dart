@@ -237,6 +237,9 @@ class _ExploreWorkoutsScreenState extends State<ExploreWorkoutsScreen> {
                           },
                         ),
                       ),
+                      const SizedBox(
+                        height: 80,
+                      ),
                     ],
                   ],
                 );

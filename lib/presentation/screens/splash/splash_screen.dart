@@ -12,25 +12,28 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: BlocBuilder<AuthCubit, AuthState>(builder: (context, state) {
-          if (state is Authenticated) {
-            return const ExploreWorkoutsScreen();
-          } else if (state is UnAuthenticated) {
-            return LoginScreen();
-          } else {
-            return const Center(
-              child: Text(
-                "FitTrack",
-                style: TextStyle(
-                  color: Color(0xff0F172A),
-                  fontSize: 64,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: "inter",
+        child: BlocBuilder<AuthCubit, AuthState>(
+          //check app auth state and decide according to it
+          builder: (context, state) {
+            if (state is Authenticated) {
+              return const ExploreWorkoutsScreen();
+            } else if (state is UnAuthenticated) {
+              return const LoginScreen();
+            } else {
+              return const Center(
+                child: Text(
+                  "FitTrack",
+                  style: TextStyle(
+                    color: Color(0xff0F172A),
+                    fontSize: 64,
+                    fontWeight: FontWeight.w700,
+                    fontFamily: "inter",
+                  ),
                 ),
-              ),
-            );
-          }
-        }),
+              );
+            }
+          },
+        ),
       ),
     );
   }

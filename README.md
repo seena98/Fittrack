@@ -1,6 +1,6 @@
 # fit_track
 
-An assginment project for Bitely.
+An assignment project for Bitely.
 
 ## Getting Started
 

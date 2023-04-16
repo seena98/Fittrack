@@ -33,7 +33,6 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var height = MediaQuery.of(context).size.longestSide;
-    // var width = MediaQuery.of(context).size.shortestSide;
     return Scaffold(
       backgroundColor: theme.colorScheme.background,
       body: SingleChildScrollView(
@@ -43,6 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
             if (userState is UserSuccess) {
               return BlocBuilder<AuthCubit, AuthState>(
                   builder: (context, authState) {
+                //go to explore workouts after sign in
                 if (authState is Authenticated) {
                   return const ExploreWorkoutsScreen();
                 } else {
@@ -56,9 +56,11 @@ class _LoginScreenState extends State<LoginScreen> {
           listener: (context, userState) {
             if (userState is UserSuccess) {
               debugPrint("login success");
+              //change user state on login success
               BlocProvider.of<AuthCubit>(context).loggedIn();
             }
             if (userState is UserFailure) {
+              //show snack bar on login failure
               debugPrint("failed");
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
@@ -72,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  ///submit log in request
   void submitSignIn() {
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
       BlocProvider.of<UserCubit>(context).submitSignIn(

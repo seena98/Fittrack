@@ -151,6 +151,7 @@ class _UpdateWorkoutScreenState extends State<UpdateWorkoutScreen> {
     );
   }
 
+  ///submit update workout request
   void updateWorkout() {
     BlocProvider.of<WorkoutCubit>(context).updateWorkout(
       workout: WorkoutEntity(
@@ -160,7 +161,7 @@ class _UpdateWorkoutScreenState extends State<UpdateWorkoutScreen> {
         id: widget.id,
       ),
     );
-
+    //this delay is for avoiding setState errors
     Future.delayed(const Duration(seconds: 1), () {
       Navigator.pop(context);
     });

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+///one light theme is defined here
 class Themes {
+  ///access object globally
   static final Themes _instance = Themes._factory();
 
   static Themes getInstance() => _instance;

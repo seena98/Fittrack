@@ -1,5 +1,6 @@
 part of 'user_cubit.dart';
 
+///user state for user bloc is defined here with every type of state related to it
 abstract class UserState extends Equatable {
   const UserState();
 }

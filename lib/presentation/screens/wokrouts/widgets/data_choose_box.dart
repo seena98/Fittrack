@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+///this custom widget is used for days of the week and also workout container
 class DataChooseBox extends StatelessWidget {
   final double height;
   final String text;
@@ -10,6 +11,7 @@ class DataChooseBox extends StatelessWidget {
   const DataChooseBox({
     required this.height,
     required this.text,
+    //this bool is for checking whether widget is for days of week or workouts
     this.isWorkout = false,
     this.onTrashTap,
     this.onTap,
@@ -33,6 +35,7 @@ class DataChooseBox extends StatelessWidget {
           ? Row(
               children: [
                 InkWell(
+                  //edit workout
                   onTap: onTap,
                   child: Text(
                     text,
@@ -44,7 +47,12 @@ class DataChooseBox extends StatelessWidget {
                 ),
                 const Spacer(),
                 InkWell(
-                    onTap: onTrashTap, child: const Icon(Icons.delete_outlined))
+                  //delete workout
+                  onTap: onTrashTap,
+                  child: const Icon(
+                    Icons.delete_outlined,
+                  ),
+                )
               ],
             )
           : Center(

@@ -20,6 +20,7 @@ import 'domain/use_cases/sign_in_usecase.dart';
 import 'domain/use_cases/sign_out_usecase.dart';
 import 'domain/use_cases/sign_up_usecase.dart';
 
+///we inject all of our dependencies and objects here once and use them multiple time easily
 GetIt getItHandler = GetIt.instance;
 
 Future<void> init() async {

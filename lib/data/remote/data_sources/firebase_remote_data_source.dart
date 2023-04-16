@@ -1,6 +1,7 @@
 import '../../../domain/entities/user_entity.dart';
 import '../../../domain/entities/workouts.dart';
 
+///abstract class for main firebase related functions
 abstract class FirebaseRemoteDataSource {
   Future<bool> isSignedIn();
 

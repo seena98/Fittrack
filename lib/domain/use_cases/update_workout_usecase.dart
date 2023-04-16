@@ -2,6 +2,7 @@ import 'package:fit_track/domain/entities/workouts.dart';
 
 import '../repositories/firebase_repositories.dart';
 
+///update workout use case is defined here
 class UpdateWorkoutUseCase {
   final FirebaseRepository repository;
 

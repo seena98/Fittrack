@@ -17,18 +17,18 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  //initialize all the dependency injections
   await dependency_injection.init();
-  //FirebaseAuth.instance.signOut();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
+      //provided all the used cubits here
       providers: [
         BlocProvider<AuthCubit>(
             create: (_) =>
@@ -42,9 +42,11 @@ class MyApp extends StatelessWidget {
         title: 'FitTrack',
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.system,
+        //provided theme factory
         theme: Themes.getInstance().light,
         // initial route to '/' splash screen
         initialRoute: '/',
+        //provided routes
         onGenerateRoute: Routers.generateRoute,
       ),
     );

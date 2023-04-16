@@ -2,6 +2,7 @@ import 'package:fit_track/domain/entities/workouts.dart';
 
 import '../entities/user_entity.dart';
 
+///abstract class for main firebase related functions
 abstract class FirebaseRepository {
   Future<bool> isSignedIn();
 

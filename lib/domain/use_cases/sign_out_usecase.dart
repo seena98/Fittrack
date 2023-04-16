@@ -1,5 +1,6 @@
 import '../repositories/firebase_repositories.dart';
 
+///sign out use case is defined here
 class SignOutUseCase {
   final FirebaseRepository repository;
 

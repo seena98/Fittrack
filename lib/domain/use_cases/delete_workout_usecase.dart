@@ -2,6 +2,7 @@ import 'package:fit_track/domain/entities/workouts.dart';
 
 import '../repositories/firebase_repositories.dart';
 
+///delete workout use case is defined here
 class DeleteWorkoutUseCase {
   final FirebaseRepository repository;
 

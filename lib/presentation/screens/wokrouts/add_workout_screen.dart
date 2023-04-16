@@ -136,6 +136,7 @@ class _AddWorkoutScreenState extends State<AddWorkoutScreen> {
     );
   }
 
+  ///submit workout add request
   void submitWorkout() {
     if (trainingNameTextController.text.isNotEmpty &&
         trainingNameTextController.text.isNotEmpty) {
@@ -148,6 +149,7 @@ class _AddWorkoutScreenState extends State<AddWorkoutScreen> {
         ),
       );
 
+      //delay to avoid set state errors
       Future.delayed(const Duration(seconds: 1), () {
         Navigator.pop(context);
       });

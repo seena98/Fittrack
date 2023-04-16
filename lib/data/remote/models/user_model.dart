@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../domain/entities/user_entity.dart';
 
+///user model extending user entity to handle json serialization
 class UserModel extends UserEntity {
   const UserModel({
     final String? name,
@@ -15,6 +16,7 @@ class UserModel extends UserEntity {
           password: password,
         );
 
+  ///translated data from db into objects
   factory UserModel.fromSnapshot(DocumentSnapshot documentSnapshot) {
     return UserModel(
       name: documentSnapshot.get('name'),
@@ -23,6 +25,7 @@ class UserModel extends UserEntity {
     );
   }
 
+  ///translates object into data ready to send to db
   Map<String, dynamic> toDocument() {
     return {"uid": uid, "email": email, "name": name};
   }

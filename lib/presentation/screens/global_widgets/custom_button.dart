@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+///this is the dark button used all over the app
 class CustomButton extends StatelessWidget {
   final double buttonHeight;
   final double buttonWidth;

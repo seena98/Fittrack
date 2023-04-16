@@ -4,6 +4,7 @@ import 'package:fit_track/domain/entities/workouts.dart';
 import '../../domain/repositories/firebase_repositories.dart';
 import '../remote/data_sources/firebase_remote_data_source.dart';
 
+///this class implements all the firebase functions and sends theme to remote data source
 class FirebaseRepositoryImpl extends FirebaseRepository {
   final FirebaseRemoteDataSource remoteDataSource;
 

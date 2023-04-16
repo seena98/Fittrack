@@ -3,6 +3,7 @@ import 'package:fit_track/presentation/screens/registration/registration_screen.
 import 'package:fit_track/presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
+///screen routes are defined here
 class Routers {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {

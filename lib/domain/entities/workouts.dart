@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+///this is a workout model
 class WorkoutEntity extends Equatable {
   final String? id;
   final String? trainingName;
@@ -13,6 +14,7 @@ class WorkoutEntity extends Equatable {
     required this.trainingName,
   });
 
+  ///props are used for Equatable functions
   @override
   List<Object?> get props => [id, trainingName, trainingTime, dayOfWeek];
 }

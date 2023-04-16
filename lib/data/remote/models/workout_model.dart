@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../domain/entities/workouts.dart';
 
+///workout model extending workout entity to handle json serialization
 class WorkoutModel extends WorkoutEntity {
   const WorkoutModel({
     final String? id,
@@ -9,12 +10,13 @@ class WorkoutModel extends WorkoutEntity {
     final int? trainingTime,
     final int? dayOfWeek,
   }) : super(
-    dayOfWeek: dayOfWeek,
-    id: id,
-    trainingName: trainingName,
-    trainingTime: trainingTime,
-  );
+          dayOfWeek: dayOfWeek,
+          id: id,
+          trainingName: trainingName,
+          trainingTime: trainingTime,
+        );
 
+  ///translated data from db into objects
   factory WorkoutModel.fromSnapshot(DocumentSnapshot documentSnapshot) {
     return WorkoutModel(
       id: documentSnapshot.get("id"),
@@ -24,6 +26,7 @@ class WorkoutModel extends WorkoutEntity {
     );
   }
 
+  ///translates object into data ready to send to db
   Map<String, dynamic> toDocument() {
     return {
       "id": id,

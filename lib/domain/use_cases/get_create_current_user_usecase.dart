@@ -1,6 +1,7 @@
 import '../entities/user_entity.dart';
 import '../repositories/firebase_repositories.dart';
 
+///GetCreateCurrentUser use case is defined here
 class GetCreateCurrentUserUseCase {
   final FirebaseRepository repository;
 

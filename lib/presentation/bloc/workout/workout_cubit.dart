@@ -10,6 +10,7 @@ import 'package:fit_track/domain/use_cases/update_workout_usecase.dart';
 
 part 'workout_state.dart';
 
+///this cubit is responsible for adding, updating, deleting and fetching  workouts
 class WorkoutCubit extends Cubit<WorkoutState> {
   final UpdateWorkoutUseCase updateWorkoutUseCase;
   final DeleteWorkoutUseCase deleteWorkoutUseCase;
@@ -23,8 +24,11 @@ class WorkoutCubit extends Cubit<WorkoutState> {
     required this.addWorkoutUseCase,
   }) : super(WorkoutInitial());
 
+
+  ///this functions gets a workout entity and adds it into db
   Future<void> addWorkout({required WorkoutEntity workout}) async {
     try {
+      ///call functionality from use cases
       await addWorkoutUseCase.call(workout);
     } on SocketException catch (_) {
       emit(WorkoutFailure());
@@ -33,8 +37,10 @@ class WorkoutCubit extends Cubit<WorkoutState> {
     }
   }
 
+  ///this functions gets a workout entity and deletes it from the db
   Future<void> deleteWorkout({required WorkoutEntity workout}) async {
     try {
+      ///call functionality from use cases
       await deleteWorkoutUseCase.call(workout);
     } on SocketException catch (_) {
       emit(WorkoutFailure());
@@ -43,6 +49,7 @@ class WorkoutCubit extends Cubit<WorkoutState> {
     }
   }
 
+  ///this functions gets a workout entity and updates it on db
   Future<void> updateWorkout({required WorkoutEntity workout}) async {
     try {
       await updateWorkoutUseCase.call(workout);
@@ -53,6 +60,7 @@ class WorkoutCubit extends Cubit<WorkoutState> {
     }
   }
 
+  ///this functions fetches all of user workouts
   Future<void> getWorkouts({required String uid}) async {
     emit(WorkoutLoading());
     try {
